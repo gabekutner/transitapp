@@ -1,0 +1,33 @@
+{
+	'route_departures': [{
+		'global_route_id': 'MUNI:4576',
+		'itineraries': [{
+			'branch_code': '',
+			'direction_headsign': 'Balboa Park via S.F. State',
+			'direction_id': 0,
+			'headsign': 'Balboa Park via S.F. State',
+			'merged_headsign': 'Balboa Park via S.F. State',
+			'schedule_items': [{
+				'departure_time': 1684047022,
+				'is_cancelled': False,
+				'is_real_time': True,
+				'rt_trip_id': '11299501',
+				'scheduled_departure_time': 1684046940,
+				'trip_search_key': 'MUNI:42110411:212:8:4',
+				'wheelchair_accessible': 0
+			}]
+		}],
+		'mode_name': 'Muni Metro Rail',
+		'real_time_route_id': 'M',
+		'route_color': '108653',
+		'route_long_name': 'M Ocean View',
+		'route_network_id': 'Muni|SF Bay Area',
+		'route_network_name': 'Muni',
+		'route_short_name': 'M',
+		'route_text_color': 'ffffff',
+		'route_type': 0,
+		'sorting_key': 'M',
+		'tts_long_name': 'M Ocean View',
+		'tts_short_name': 'M line'
+	}]
+}
