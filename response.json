@@ -1,33 +1,139 @@
-{
-	'route_departures': [{
-		'global_route_id': 'MUNI:4576',
-		'itineraries': [{
-			'branch_code': '',
-			'direction_headsign': 'Balboa Park via S.F. State',
-			'direction_id': 0,
-			'headsign': 'Balboa Park via S.F. State',
-			'merged_headsign': 'Balboa Park via S.F. State',
-			'schedule_items': [{
-				'departure_time': 1684047022,
-				'is_cancelled': False,
-				'is_real_time': True,
-				'rt_trip_id': '11299501',
-				'scheduled_departure_time': 1684046940,
-				'trip_search_key': 'MUNI:42110411:212:8:4',
-				'wheelchair_accessible': 0
-			}]
-		}],
-		'mode_name': 'Muni Metro Rail',
-		'real_time_route_id': 'M',
-		'route_color': '108653',
-		'route_long_name': 'M Ocean View',
-		'route_network_id': 'Muni|SF Bay Area',
-		'route_network_name': 'Muni',
-		'route_short_name': 'M',
-		'route_text_color': 'ffffff',
-		'route_type': 0,
-		'sorting_key': 'M',
-		'tts_long_name': 'M Ocean View',
-		'tts_short_name': 'M line'
-	}]
-}
+[{
+	'global_route_id': 'MUNI:4576',
+	'itineraries': [{
+		'branch_code': '',
+		'direction_headsign': 'Embarcadero Station',
+		'direction_id': 1,
+		'headsign': 'Embarcadero Station',
+		'merged_headsign': 'Embarcadero Station',
+		'schedule_items': [{
+			'departure_time': 1684106569,
+			'is_cancelled': False,
+			'is_real_time': True,
+			'rt_trip_id': '11299799',
+			'scheduled_departure_time': 1684106580,
+			'trip_search_key': 'MUNI:42110411:214:9:39',
+			'wheelchair_accessible': 0
+		}, {
+			'departure_time': 1684107300,
+			'is_cancelled': False,
+			'is_real_time': False,
+			'rt_trip_id': '11299800',
+			'scheduled_departure_time': 1684107300,
+			'trip_search_key': 'MUNI:42110411:214:9:40',
+			'wheelchair_accessible': 0
+		}, {
+			'departure_time': 1684108020,
+			'is_cancelled': False,
+			'is_real_time': False,
+			'rt_trip_id': '11299801',
+			'scheduled_departure_time': 1684108020,
+			'trip_search_key': 'MUNI:42110411:214:9:41',
+			'wheelchair_accessible': 0
+		}]
+	}],
+	'mode_name': 'Muni Metro Rail',
+	'real_time_route_id': 'M',
+	'route_color': '108653',
+	'route_long_name': 'M Ocean View',
+	'route_network_id': 'Muni|SF Bay Area',
+	'route_network_name': 'Muni',
+	'route_short_name': 'M',
+	'route_text_color': 'ffffff',
+	'route_type': 0,
+	'sorting_key': 'M',
+	'tts_long_name': 'M Ocean View',
+	'tts_short_name': 'M line'
+}, {
+	'global_route_id': 'MUNI:4574',
+	'itineraries': [{
+		'branch_code': '',
+		'direction_headsign': 'Embarcadero Station',
+		'direction_id': 1,
+		'headsign': 'Embarcadero Station',
+		'merged_headsign': 'Embarcadero Station',
+		'schedule_items': [{
+			'departure_time': 1684159200,
+			'is_cancelled': False,
+			'is_real_time': False,
+			'rt_trip_id': '11302498_M21',
+			'scheduled_departure_time': 1684159200,
+			'trip_search_key': 'MUNI:42110411:246:10:0',
+			'wheelchair_accessible': 0
+		}, {
+			'departure_time': 1684160400,
+			'is_cancelled': False,
+			'is_real_time': False,
+			'rt_trip_id': '11302536_M21',
+			'scheduled_departure_time': 1684160400,
+			'trip_search_key': 'MUNI:42110411:246:10:1',
+			'wheelchair_accessible': 0
+		}, {
+			'departure_time': 1684161600,
+			'is_cancelled': False,
+			'is_real_time': False,
+			'rt_trip_id': '11302535_M21',
+			'scheduled_departure_time': 1684161600,
+			'trip_search_key': 'MUNI:42110411:246:10:2',
+			'wheelchair_accessible': 0
+		}]
+	}],
+	'mode_name': 'Muni Metro Rail',
+	'real_time_route_id': 'S',
+	'route_color': 'ffca28',
+	'route_long_name': 'Shuttle',
+	'route_network_id': 'Muni|SF Bay Area',
+	'route_network_name': 'Muni',
+	'route_short_name': 'S',
+	'route_text_color': '000000',
+	'route_type': 0,
+	'sorting_key': 'S',
+	'tts_long_name': 'Shuttle',
+	'tts_short_name': 'S line'
+}, {
+	'global_route_id': 'MUNI:231989',
+	'itineraries': [{
+		'branch_code': '',
+		'direction_headsign': 'Embarcadero Station',
+		'direction_id': 1,
+		'headsign': 'Embarcadero Station',
+		'merged_headsign': 'Embarcadero Station',
+		'schedule_items': [{
+			'departure_time': 1684106220,
+			'is_cancelled': False,
+			'is_real_time': False,
+			'rt_trip_id': '11297264',
+			'scheduled_departure_time': 1684106220,
+			'trip_search_key': 'MUNI:42110411:200:9:41',
+			'wheelchair_accessible': 0
+		}, {
+			'departure_time': 1684107143,
+			'is_cancelled': False,
+			'is_real_time': True,
+			'rt_trip_id': '11297265',
+			'scheduled_departure_time': 1684106940,
+			'trip_search_key': 'MUNI:42110411:200:9:42',
+			'wheelchair_accessible': 0
+		}, {
+			'departure_time': 1684107789,
+			'is_cancelled': False,
+			'is_real_time': True,
+			'rt_trip_id': '11297266',
+			'scheduled_departure_time': 1684107660,
+			'trip_search_key': 'MUNI:42110411:200:9:43',
+			'wheelchair_accessible': 0
+		}]
+	}],
+	'mode_name': 'Muni Metro Rail',
+	'real_time_route_id': 'K',
+	'route_color': '539cbe',
+	'route_long_name': 'Ingleside',
+	'route_network_id': 'Muni|SF Bay Area',
+	'route_network_name': 'Muni',
+	'route_short_name': 'K',
+	'route_text_color': 'ffffff',
+	'route_type': 0,
+	'sorting_key': 'K',
+	'tts_long_name': 'Ingleside',
+	'tts_short_name': 'K line'
+}]
