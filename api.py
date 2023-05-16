@@ -4,7 +4,7 @@ import os
 import json
 import requests
 import urllib.parse
-from datetime import datetime
+from datetime import datetime, timedelta
 
 
 with open(os.path.join(os.path.dirname(__file__), 'secrets.json')) as f:
@@ -81,8 +81,9 @@ def stop_departures(global_stop_id: str) -> list:
 			list_of_times = []
 			for v in i['itineraries'][0]['schedule_items']:
 				# i['departure_time']
-				list_of_times.append(datetime.utcfromtimestamp(v['departure_time']).strftime('%H:%M:%S'))
-
+				dt = (datetime.fromtimestamp(v['departure_time']).strftime('%Y-%m-%d %H:%M:%S'))
+				# print(dt)
+				list_of_times.append(dt)
 
 			ls.append(direction_headsign)
 			ls.append(route_long_name)
@@ -114,10 +115,11 @@ if __name__ == '__main__':
 	# return train name / #, departure times
 
 	# commented to not show stops near me
-	# departure_info = stop_departures(nearbyStops[])
+	departure_info = stop_departures(nearbyStops["Right of Way / Ocean Ave"])
 
-	# print(departure_info)
-	
+	print(departure_info)
+
+
 
 
 
