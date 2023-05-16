@@ -77,6 +77,26 @@ box.set("")
 
 bottom_frame.pack()
 
-
-
 root.mainloop()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
