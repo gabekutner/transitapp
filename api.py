@@ -22,16 +22,35 @@ url = "https://external.transitapp.com/v3"
 api_key = get_secrets("API_KEY")
 headers = {'apiKey': api_key}
 
+def entry_check(address: str):
+	""" Checks the entry value. """
+	ls = list(address)
+	if ls[len(ls)-1] == " ":
+		address = address[:-1]
+		return address
+	else:
+		pass
+
 
 def get_coordinates(address: str):
 	""" Gets the latitude x longitude for an address. """
-	url = 'https://nominatim.openstreetmap.org/search/' + urllib.parse.quote(address) +'?format=json'
+
+	checked_address = entry_check(address)
+	if checked_address == None:
+		url = 'https://nominatim.openstreetmap.org/search/' + urllib.parse.quote(address) +'?format=json'
+	else:
+		url = 'https://nominatim.openstreetmap.org/search/' + urllib.parse.quote(checked_address) +'?format=json'
 
 	response = requests.get(url).json()
-	lat = (response[0]["lat"])
-	lon = (response[0]["lon"])
-	return lat, lon
 
+	try:
+		lat = response[0]["lat"]
+		lon = response[0]["lon"]
+		return lat, lon, checked_address
+	except IndexError:
+		return None
+
+	
 
 def nearby_stops(lat: float, lon: float, output: str = "list"):
 	""" Get stops and global_stop_id with latitude and longitude. 
@@ -104,21 +123,26 @@ if __name__ == '__main__':
 	# user enters address
 
 	# using address, gets coordinates
-	address = get_secrets('ADDRESS')
+	address = get_secrets("ADDRESS")
 	coor = get_coordinates(address)
+	# print(coor)
+	# print(coor)
 
 	# using coordinates finds stops within a 1500 meter radius
 	nearbyStops = (nearby_stops(coor[0], coor[1], 'dict'))
+
+	# print(nearbyStops)
+
+	# print(nearbyStops)
 
 	# user picks stop
 
 	# return train name / #, departure times
 
 	# commented to not show stops near me
-	departure_info = stop_departures(nearbyStops["Right of Way / Ocean Ave"])
+	departure_info = stop_departures(nearbyStops["West Portal"])
 
 	print(departure_info)
-
 
 
 
