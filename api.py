@@ -28,8 +28,6 @@ def entry_check(address: str):
 	if ls[len(ls)-1] == " ":
 		address = address[:-1]
 		return address
-	else:
-		pass
 
 
 def get_coordinates(address: str):
@@ -79,16 +77,19 @@ def nearby_stops(lat: float, lon: float, output: str = "list"):
 		return stops
 
 def stop_departures(global_stop_id: str) -> list:
-	""" Get departure times. """
+	""" Get departure times. 
+
+		Args:
+			global_stop_id: The global stop id.
+	"""
 	with requests.get(url+"/public/stop_departures", headers=headers, params={'global_stop_id': global_stop_id}) as data:
 
 		response = data.json()['route_departures']
 
-		list = []
-
+		list_of_trains = []
 		for i in response:
 
-			ls = []
+			train_list = []
 
 			direction_headsign = i['itineraries'][0]['direction_headsign']
 			route_long_name = i['route_long_name']
@@ -99,22 +100,20 @@ def stop_departures(global_stop_id: str) -> list:
 
 			list_of_times = []
 			for v in i['itineraries'][0]['schedule_items']:
-				# i['departure_time']
 				dt = (datetime.fromtimestamp(v['departure_time']).strftime('%Y-%m-%d %H:%M:%S'))
-				# print(dt)
 				list_of_times.append(dt)
 
-			ls.append(direction_headsign)
-			ls.append(route_long_name)
-			ls.append(route_short_name)
-			ls.append(tts_long_name)
-			ls.append(tts_short_name)
-			ls.append(route_color)
-			ls.append(list_of_times)
+			train_list.append(direction_headsign)
+			train_list.append(route_long_name)
+			train_list.append(route_short_name)
+			train_list.append(tts_long_name)
+			train_list.append(tts_short_name)
+			train_list.append(route_color)
+			train_list.append(list_of_times)
 
-			list.append(ls)
+			list_of_trains.append(train_list)
 
-		return list
+		return list_of_trains
 
 
 

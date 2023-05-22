@@ -6,54 +6,54 @@ from ttkbootstrap.tableview import Tableview
 
 import api
 
-customtkinter.set_appearance_mode("System")
+customtkinter.set_appearance_mode("Dark")
 customtkinter.set_default_color_theme("green")
 
 
-def entry_callback():
-	address = entry.get()
-	coor = api.get_coordinates(address)
+def clear_frame(frame):
+	for widgets in frame.winfo_children():
+		widgets.destroy()
 
+def entry_callback():
+	""" Update the OptionMenu with nearby stops.
+	"""
+	address = entry.get()
+
+	coor = api.get_coordinates(address)
 	nearby_stops = api.nearby_stops(coor[0], coor[1], 'list')
+
 	box.configure(values=nearby_stops)
 	print("Updated")
 
-def create_rows(frame, data):
-	""" Create a table for trains and stop times. """
+def create_rows(frame: ctk.CTkScrollableFrame, data: list):
+	""" Create a table for trains and stop times.
+	"""
 	scrollable_frame_labels = []
-	for i in range(len(data)):
-		# print(i)
-		label = ctk.CTkLabel(master=frame, text=data[0])
-		label.grid(row=i, column=0, pady=(0, 20))
-		scrollable_frame_labels.append(label)
+	for n, train in enumerate(data):
 
-	# coldata = [
-	# 	{"text": "Name"}, # tss_short_name
-	# 	{"text": "Times"}, # list_of_times
-	# ]
+		# Train name
+		train_label = ctk.CTkLabel(master=frame, text=train[0])
+		train_label.grid(row=n, column=2, pady=(0, 20))
+		# Train times
+		time_label = ctk.CTkLabel(master=frame, text=train[1])
+		time_label.grid(row=n, column=3, padx=(10, 0), pady=(0, 20))
 
-	# table = Tableview(
-	# 	master=frame,
-	# 	coldata=coldata,
-	# 	rowdata=data,
-	# 	paginated=True,
-	# 	searchable=True,		
-	# )
-		
-	# table.grid(column=2, row=0, rowspan=4, padx=10, pady=10)
-	# return table
+		scrollable_frame_labels.append(train_label)
+		scrollable_frame_labels.append(time_label)
 
 def box_callback(choice):
+	""" Create the ctk.CTkScrollableFrame for train names and departure times.
+	"""
 	address = entry.get()
 	coor = api.get_coordinates(address)
 	nearby_stops = api.nearby_stops(coor[0], coor[1], 'dict')
 	departure_info = api.stop_departures(nearby_stops[choice])
-	# print(departure_info)
 
 	data = []
 	for i in departure_info:
 		data.append((i[4], i[6]))
 
+	clear_frame(scrollable_frame)
 	create_rows(scrollable_frame, data)
 
 
@@ -63,7 +63,7 @@ app.geometry("600x300")
 
 # Define grid
 app.columnconfigure((0,1), weight=1)
-app.columnconfigure(2, weight=15)
+app.columnconfigure((2,3), weight=15)
 
 app.rowconfigure(0, weight=1)
 app.rowconfigure(1, weight=1)
@@ -71,13 +71,12 @@ app.rowconfigure(2, weight=1)
 app.rowconfigure(3, weight=1)
 
 # Define widgets
+# Left to right definitions
 main = ctk.CTkFrame(app)
 
 super_frame_2 = ctk.CTkFrame(main)
 scrollable_frame = ctk.CTkScrollableFrame(super_frame_2, label_text="Trains and Times", height=20)
 
-
-# Left to right definitions
 super_frame_1 = ctk.CTkFrame(master=main)
 entry = ctk.CTkEntry(master=super_frame_1, placeholder_text="Enter...")
 button = ctk.CTkButton(master=super_frame_1, text="Submit", width=15, command=entry_callback)
