@@ -22,33 +22,20 @@ url = "https://external.transitapp.com/v3"
 api_key = get_secrets("API_KEY")
 headers = {'apiKey': api_key}
 
-def entry_check(address: str):
-	""" Checks the entry value. """
-	ls = list(address)
-	if ls[len(ls)-1] == " ":
-		address = address[:-1]
-		return address
-
-
 def get_coordinates(address: str):
 	""" Gets the latitude x longitude for an address. """
-
-	checked_address = entry_check(address)
-	if checked_address == None:
-		url = 'https://nominatim.openstreetmap.org/search/' + urllib.parse.quote(address) +'?format=json'
-	else:
-		url = 'https://nominatim.openstreetmap.org/search/' + urllib.parse.quote(checked_address) +'?format=json'
+	address = address.strip()
+	url = 'https://nominatim.openstreetmap.org/search/' + urllib.parse.quote(address) +'?format=json'
 
 	response = requests.get(url).json()
 
-	try:
-		lat = response[0]["lat"]
-		lon = response[0]["lon"]
-		return lat, lon, checked_address
-	except IndexError:
-		return None
+	if response == []:
+		raise Exception(f"[Error] Check that you entered the address correctly.")
 
-	
+	lat = response[0]["lat"]
+	lon = response[0]["lon"]
+	return lat, lon, address
+
 
 def nearby_stops(lat: float, lon: float, output: str = "list"):
 	""" Get stops and global_stop_id with latitude and longitude. 

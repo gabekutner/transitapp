@@ -28,18 +28,23 @@ def entry_callback():
 def create_rows(frame: ctk.CTkScrollableFrame, data: list):
 	""" Create a table for trains and stop times.
 	"""
-	scrollable_frame_labels = []
+	# scrollable_frame_labels = []
 	for n, train in enumerate(data):
 
-		# Train name
-		train_label = ctk.CTkLabel(master=frame, text=train[0])
-		train_label.grid(row=n, column=2, pady=(0, 20))
-		# Train times
-		time_label = ctk.CTkLabel(master=frame, text=train[1])
-		time_label.grid(row=n, column=3, padx=(10, 0), pady=(0, 20))
+		train_frame = ctk.CTkFrame(master=frame)
+		train_frame.pack()
+		# train_frame.grid(column=2, columnspan=2)
 
-		scrollable_frame_labels.append(train_label)
-		scrollable_frame_labels.append(time_label)
+		train_label = ctk.CTkLabel(master=train_frame, text=train[0])
+		train_label.pack()
+		# train_label.grid(column=2, pady=(0, 20)) # , pady=(0, 20)
+
+		time_label = ctk.CTkLabel(master=train_frame, text=train[1])
+		time_label.pack()
+		# time_label.grid(column=2, padx=(10, 0), pady=(0, 20)) #, padx=(10, 0), pady=(0, 20)
+
+		# scrollable_frame_labels.append(train_label)
+		# scrollable_frame_labels.append(time_label)
 
 def box_callback(choice):
 	""" Create the ctk.CTkScrollableFrame for train names and departure times.
